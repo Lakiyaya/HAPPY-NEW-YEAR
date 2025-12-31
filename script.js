@@ -1,11 +1,11 @@
-/* =================== SRI LANKA TIME =================== */
+/* ============ SRI LANKA TIME ============ */
 function getSLTime() {
   return new Date(
-    new Date().toLocaleString("en-US", { timeZone: "Asia/Colombo" })
+    new Date().toLocaleString("en-US",{timeZone:"Asia/Colombo"})
   );
 }
 
-/* =================== COUNTDOWN =================== */
+/* ============ COUNTDOWN ============ */
 const targetDate = new Date("2026-01-01T00:00:00+05:30");
 const daysEl = document.getElementById("days");
 const hoursEl = document.getElementById("hours");
@@ -13,7 +13,7 @@ const minutesEl = document.getElementById("minutes");
 const secondsEl = document.getElementById("seconds");
 const countdownBox = document.getElementById("countdown");
 
-function updateCountdown() {
+function updateCountdown(){
   const now = getSLTime();
   const diff = targetDate - now;
 
@@ -23,10 +23,10 @@ function updateCountdown() {
     return;
   }
 
-  const days = Math.floor(diff / (1000*60*60*24));
-  const hours = Math.floor((diff / (1000*60*60)) % 24);
-  const minutes = Math.floor((diff / (1000*60)) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
+  const days = Math.floor(diff/(1000*60*60*24));
+  const hours = Math.floor((diff/(1000*60*60))%24);
+  const minutes = Math.floor((diff/(1000*60))%60);
+  const seconds = Math.floor((diff/1000)%60);
 
   daysEl.innerText = String(days).padStart(2,"0");
   hoursEl.innerText = String(hours).padStart(2,"0");
@@ -35,9 +35,9 @@ function updateCountdown() {
 }
 
 updateCountdown();
-setInterval(updateCountdown, 1000);
+setInterval(updateCountdown,1000);
 
-/* =================== FIREWORKS =================== */
+/* ============ FIREWORKS ============ */
 const canvas = document.getElementById("fireworks");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
@@ -62,7 +62,7 @@ function animate(){
     p.x+=Math.cos(p.a)*p.s;
     p.y+=Math.sin(p.a)*p.s;
     p.l--;
-    ctx.fillStyle = p.c;
+    ctx.fillStyle=p.c;
     ctx.beginPath();
     ctx.arc(p.x,p.y,2,0,Math.PI*2);
     ctx.fill();
@@ -72,25 +72,29 @@ function animate(){
 }
 animate();
 
-/* =================== CELEBRATION =================== */
+/* ============ CELEBRATION ============ */
 const fireSound = document.getElementById("fireSound");
-let started = false;
+let started=false;
 
 function startCelebration(){
   if(started) return;
-  started = true;
-
-  fireSound.volume = 0.6;
+  started=true;
+  fireSound.volume=0.6;
   fireSound.play().catch(()=>{});
-
   setInterval(()=>{
-    firework(Math.random()*canvas.width, Math.random()*canvas.height*0.5 + 150);
+    firework(Math.random()*canvas.width, Math.random()*canvas.height*0.5+150);
   },500);
 }
 
-/* =================== TIME WINDOW 12AM–10AM =================== */
+/* ============ TIME WINDOW 12AM–10AM ============ */
 function checkWindow(){
-  const h = getSLTime().getHours();
+  const h=getSLTime().getHours();
   if(h>=0 && h<10) startCelebration();
 }
 checkWindow();
+
+/* ============ BUTTON CLICK TO SHOW WISHES ============ */
+document.getElementById("wishBtn").addEventListener("click", ()=>{
+  document.getElementById("wishes").style.display="block";
+  startCelebration();
+});
