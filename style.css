@@ -18,7 +18,6 @@ body {
 
 .wrapper {
   text-align: center;
-  cursor: pointer;
 }
 
 #mainText {
@@ -27,17 +26,38 @@ body {
   animation: glow 2s infinite alternate;
 }
 
-.tap {
-  margin-top: 15px;
-  opacity: 0.7;
-  font-size: 1rem;
+#wishBtn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  color: #fff;
+  background: #ff3c3c;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff3c3c;
+  transition: 0.3s ease;
 }
 
-#wish {
-  margin-top: 25px;
-  font-size: 2rem;
-  color: #ffeb3b;
-  animation: drop 1s ease-out;
+#wishBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px #ff3c3c;
+}
+
+#messages {
+  margin-top: 30px;
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+#messages.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.msg {
+  margin: 15px 0;
 }
 
 footer {
@@ -57,16 +77,5 @@ footer span {
   }
   to {
     text-shadow: 0 0 30px #00ffe7, 0 0 60px #00ffe7;
-  }
-}
-
-@keyframes drop {
-  from {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
   }
 }
