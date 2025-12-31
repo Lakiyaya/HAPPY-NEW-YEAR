@@ -151,3 +151,61 @@ function checkWindow() {
   if (h >= 0 && h < 10) startCelebration();
 }
 checkWindow();
+let particles = [];
+
+function burst(x, y) {
+  for (let i = 0; i < 80; i++) {
+    particles.push({
+      x, y,
+      a: Math.random() * Math.PI * 2,
+      s: Math.random() * 6 + 2,
+      l: 80,
+      c: `hsl(${Math.random()*360},100%,60%)`
+    });
+  }
+}
+
+function animate() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach((p,i)=>{
+    p.x += Math.cos(p.a)*p.s;
+    p.y += Math.sin(p.a)*p.s;
+    p.l--;
+    ctx.fillStyle = p.c;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,2,0,Math.PI*2);
+    ctx.fill();
+    if(p.l<=0) particles.splice(i,1);
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+
+/* ========= CELEBRATION MODE ========= */
+const fireSound = document.getElementById("fireSound");
+const text = document.getElementById("celebrateText");
+const dev = document.getElementById("devDrop");
+
+let started = false;
+
+function startCelebration() {
+  if (started) return;
+  started = true;
+
+  text.style.opacity = "1";
+  dev.style.opacity = "1";
+
+  fireSound.volume = 0.6;
+  fireSound.play().catch(()=>{});
+
+  setInterval(()=>{
+    burst(Math.random()*canvas.width, Math.random()*canvas.height*0.6);
+  },500);
+}
+
+/* ========= TIME WINDOW 12AM–10AM ========= */
+function checkWindow() {
+  const h = getSLTime().getHours();
+  if (h >= 0 && h < 10) startCelebration();
+}
+checkWindow();
