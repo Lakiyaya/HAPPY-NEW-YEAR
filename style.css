@@ -2,80 +2,159 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
 
+/* BODY + BACKGROUND */
 body {
   height: 100vh;
-  background: radial-gradient(circle at top, #0f0c29, #302b63, #24243e);
+  background: url("https://files.catbox.moe/vn0zjt.jpg") no-repeat center center/cover;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   color: #fff;
   overflow: hidden;
 }
 
-.wrapper {
-  text-align: center;
+/* DARK OVERLAY */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1;
 }
 
-#mainText {
-  font-size: 3rem;
-  text-shadow: 0 0 15px #00ffe7, 0 0 30px #00ffe7;
+/* GLASS CARD */
+.card {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 420px;
+  padding: 30px 22px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 22px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 0 45px rgba(0, 255, 231, 0.4);
+}
+
+/* TITLE */
+.card h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  text-shadow: 0 0 15px #00ffe7, 0 0 35px #00ffe7;
   animation: glow 2s infinite alternate;
 }
 
-#wishBtn {
-  margin-top: 20px;
-  padding: 12px 25px;
-  font-size: 1.2rem;
-  color: #fff;
-  background: #ff3c3c;
+/* COUNTDOWN */
+#countdown {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+#countdown div {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 10px 5px;
+  border-radius: 14px;
+}
+
+#countdown span {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00ffe7;
+}
+
+#countdown small {
+  font-size: 0.7rem;
+  opacity: 0.85;
+}
+
+/* BUTTON */
+button {
+  margin-top: 10px;
+  padding: 13px 25px;
+  font-size: 1.1rem;
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
   cursor: pointer;
-  box-shadow: 0 0 15px #ff3c3c;
-  transition: 0.3s ease;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  color: #fff;
+  box-shadow: 0 0 22px rgba(255, 75, 43, 0.9);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#wishBtn:hover {
+button:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 25px #ff3c3c;
+  box-shadow: 0 0 40px rgba(255, 75, 43, 1);
 }
 
+/* MESSAGES */
 #messages {
-  margin-top: 30px;
-  font-size: 1.2rem;
-  opacity: 0;
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-#messages.show {
-  opacity: 1;
-  transform: translateY(0);
+  margin-top: 25px;
 }
 
 .msg {
-  margin: 15px 0;
+  display: none;
+  margin-top: 14px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  animation: slideUp 0.9s ease forwards;
 }
 
+/* FOOTER */
 footer {
-  position: absolute;
-  bottom: 15px;
-  font-size: 0.9rem;
-  opacity: 0.8;
+  position: fixed;
+  bottom: 12px;
+  z-index: 2;
+  font-size: 0.8rem;
+  opacity: 0.85;
 }
 
 footer span {
   color: #00ffe7;
 }
 
+/* ANIMATIONS */
 @keyframes glow {
   from {
     text-shadow: 0 0 10px #00ffe7;
   }
   to {
     text-shadow: 0 0 30px #00ffe7, 0 0 60px #00ffe7;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 480px) {
+  .card {
+    padding: 25px 18px;
+  }
+
+  .card h1 {
+    font-size: 1.6rem;
+  }
+
+  #countdown span {
+    font-size: 1.2rem;
+  }
+
+  .msg {
+    font-size: 0.9rem;
   }
 }
