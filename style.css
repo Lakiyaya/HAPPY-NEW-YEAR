@@ -9,93 +9,32 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background: url("https://files.catbox.moe/vn0zjt.jpg") center/cover no-repeat fixed;
   color: #fff;
   text-align: center;
   overflow: hidden;
-}
-
-/* DARK OVERLAY */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 1;
-}
-
-/* MAIN CONTENT */
-.container {
-  position: relative;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* TITLE */
-#title {
-  font-size: 2.8rem;
-  margin-bottom: 20px;
-  color: gold;
-  text-shadow: 0 0 20px #ffea00;
+  padding-top: 80px;
 }
 
 /* COUNTDOWN */
 #countdown {
-  font-size: 1.5rem;
-  background: rgba(255,255,255,0.1);
-  padding: 12px 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255,255,255,0.3);
+  font-size: 2rem;
+  color: #1e90ff; /* Nice blue */
+  background: rgba(0,0,0,0.2);
+  padding: 15px 25px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(30,144,255,0.7);
+  z-index: 2;
 }
 
 /* FIREWORKS CANVAS */
 #fireworks {
   position: fixed;
   inset: 0;
-  z-index: 4;
+  z-index: 1;
   pointer-events: none;
-}
-
-/* CELEBRATION TEXT */
-#celebrateText {
-  position: fixed;
-  top: 35%;
-  width: 100%;
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: gold;
-  text-shadow: 0 0 30px red, 0 0 50px yellow;
-  opacity: 0;
-  z-index: 6;
-  animation: pop 1.5s ease forwards;
-}
-
-@keyframes pop {
-  from { transform: scale(0.5); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-/* DEVELOPER DROP */
-#devDrop {
-  position: fixed;
-  top: -60px;
-  width: 100%;
-  text-align: center;
-  font-size: 1.2rem;
-  color: #00ffe7;
-  opacity: 0;
-  z-index: 6;
-  animation: drop 2s ease forwards;
-}
-
-@keyframes drop {
-  from { top: -60px; opacity: 0; }
-  to { top: 65%; opacity: 1; }
 }
 
 /* FOOTER */
@@ -104,6 +43,7 @@ footer {
   bottom: 10px;
   font-size: 0.85rem;
   opacity: 0.8;
+  color: #fff;
 }
 
 footer span {
@@ -112,8 +52,5 @@ footer span {
 
 /* MOBILE */
 @media (max-width: 480px) {
-  #title { font-size: 2rem; }
-  #countdown { font-size: 1.2rem; padding: 10px 15px; }
-  #celebrateText { font-size: 1.7rem; }
-  #devDrop { font-size: 1rem; }
+  #countdown { font-size: 1.5rem; padding: 10px 15px; }
 }
