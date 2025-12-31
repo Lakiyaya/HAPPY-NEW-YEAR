@@ -1,75 +1,106 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-/* BODY + BACKGROUND */
+/* BODY */
 body {
-  height: 100vh;
-  background: url("https://files.catbox.moe/vn0zjt.jpg") no-repeat center center/cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
+  min-height: 100vh;
+  background: url("https://files.catbox.moe/vn0zjt.jpg") center/cover no-repeat fixed;
   overflow: hidden;
+  color: #fff;
 }
 
 /* DARK OVERLAY */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
+  background: rgba(0,0,0,0.55);
   z-index: 1;
 }
 
-/* GLASS CARD */
-.card {
+/* CONTENT */
+.container {
   position: relative;
-  z-index: 2;
-  width: 90%;
-  max-width: 420px;
-  padding: 30px 22px;
+  z-index: 3;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 22px;
-  backdrop-filter: blur(18px);
-  box-shadow: 0 0 45px rgba(0, 255, 231, 0.4);
 }
 
 /* TITLE */
-.card h1 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-  text-shadow: 0 0 15px #00ffe7, 0 0 35px #00ffe7;
-  animation: glow 2s infinite alternate;
+#title {
+  font-size: 2.8rem;
+  text-shadow: 0 0 20px gold;
+  margin-bottom: 20px;
 }
 
 /* COUNTDOWN */
 #countdown {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  margin: 20px 0;
+  font-size: 1.4rem;
+  background: rgba(0,0,0,0.4);
+  padding: 12px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255,215,0,0.6);
 }
 
-#countdown div {
-  flex: 1;
-  background: rgba(0, 0, 0, 0.35);
-  padding: 10px 5px;
-  border-radius: 14px;
+/* FIREWORKS CANVAS */
+#fireworks {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
 }
 
-#countdown span {
-  display: block;
-  font-size: 1.5rem;
+/* CELEBRATION TEXT */
+#celebrateText {
+  position: fixed;
+  top: 35%;
+  width: 100%;
+  text-align: center;
+  font-size: 2.5rem;
   font-weight: bold;
-  color: #00ffe7;
+  color: gold;
+  text-shadow: 0 0 30px red, 0 0 50px yellow;
+  opacity: 0;
+  z-index: 6;
+  animation: pop 1.5s ease forwards;
 }
 
-#countdown small {
+@keyframes pop {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* DEVELOPER DROP */
+#devDrop {
+  position: fixed;
+  top: -60px;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #00ffe7;
+  opacity: 0;
+  z-index: 6;
+  animation: drop 2s ease forwards;
+}
+
+@keyframes drop {
+  from { top: -60px; opacity: 0; }
+  to { top: 65%; opacity: 1; }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  #title { font-size: 2rem; }
+  #celebrateText { font-size: 1.7rem; }
+}#countdown small {
   font-size: 0.7rem;
   opacity: 0.85;
 }
