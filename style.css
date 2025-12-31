@@ -1,56 +1,78 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
 }
 
 body {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  background: url("https://files.catbox.moe/vn0zjt.jpg") center/cover no-repeat fixed;
-  color: #fff;
-  text-align: center;
-  overflow: hidden;
-  padding-top: 80px;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
+  background: url("https://files.catbox.moe/7iqzb2.jpg") center/cover no-repeat fixed;
+  color:#fff;
+  text-align:center;
+  overflow:hidden;
+  padding-top:80px;
 }
 
-/* COUNTDOWN */
 #countdown {
-  font-size: 2rem;
-  color: #1e90ff; /* Nice blue */
+  font-size:2rem;
+  color:#1e90ff;
   background: rgba(0,0,0,0.2);
   padding: 15px 25px;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(30,144,255,0.7);
-  z-index: 2;
+  border-radius:15px;
+  box-shadow:0 0 15px rgba(30,144,255,0.7);
+  z-index:2;
+  margin-bottom:20px;
+}
+
+#wishBtn {
+  padding:10px 20px;
+  border:none;
+  border-radius:10px;
+  background:#1e90ff;
+  color:white;
+  font-size:1rem;
+  cursor:pointer;
+  transition:0.3s;
+  z-index:2;
+}
+
+#wishBtn:hover { background:#0066cc; }
+
+#wishes {
+  margin-top:20px;
+  font-size:1rem;
+  line-height:1.5;
+  color: gold;
 }
 
 /* FIREWORKS CANVAS */
 #fireworks {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
+  position:fixed;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
 }
 
-/* FOOTER */
 footer {
   position: fixed;
   bottom: 10px;
   font-size: 0.85rem;
-  opacity: 0.8;
-  color: #fff;
+  opacity:0.8;
+  color:#fff;
 }
 
 footer span {
-  color: #00ffe7;
+  color:#00ffe7;
 }
 
 /* MOBILE */
-@media (max-width: 480px) {
-  #countdown { font-size: 1.5rem; padding: 10px 15px; }
+@media(max-width:480px){
+  #countdown{font-size:1.5rem;padding:10px 15px;}
+  #wishBtn{padding:8px 16px;font-size:0.9rem;}
+  #wishes{font-size:0.9rem;}
 }
